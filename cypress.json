@@ -1,8 +1,9 @@
 {
-   "baseUrl": "https://www.google.com",
+   "baseUrl": "http://stomatologia-medilab.pl/",
    "retries": 2,
    "watchForFilesChanges": false,
    "viewportWidth": 1000,
-  "viewportHeight": 660
+  "viewportHeight": 700,
+  "projectId": "nzdiyc"
 }
 

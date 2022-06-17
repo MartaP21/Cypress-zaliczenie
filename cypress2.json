@@ -1,5 +1,5 @@
 {
-   "baseUrl": "https://www.google.com",
+   "baseUrl": "http://stomatologia-medilab.pl/",
    "retries": 2,
    "watchForFilesChanges": false,
    "viewportHeight": 1080,

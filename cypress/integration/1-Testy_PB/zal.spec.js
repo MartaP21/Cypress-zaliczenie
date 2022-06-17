@@ -6,7 +6,7 @@ context("Online Store Tests", () => {
       cy.visit("www.stomatologia-medilab.pl");
       cy.url().should("contain", "stomatologia");
       cy.get("#cookies_close > .glyphicon").click().should("not.be.visible");
-      cy.fixture("searchProduct.json").as("productByAlias");
+      cy.fixture("searchProduct.json").as("product");
     });
     it("Banner scrolling test", () => {
       cy.get(".arrow-right > .glyphicon").click().should("be.visible");
@@ -95,10 +95,16 @@ context("Online Store Tests", () => {
     it("User login - positive case", () => {
       cy.visit("www.stomatologia-medilab.pl/user/loginUser");
       cy.get(".panel-title").should("be.visible");
-      cy.get("#st_form-user-email").type("negativeTest");
-      cy.get("#st_form-user-password").type("pass");
+      cy.get("#st_form-user-email").type("marta.86@wp.pl");
+      cy.get("#st_form-user-password").type("u5PtHV7byDJwpMR");
       cy.get(".st_form_ver6 > .pull-right > .btn").click();
-      cy.get(".control-label").should("be.visible");
+      cy.get('.panel-body > :nth-child(1)').should("be.visible");
+    });
+    it("Finding product throught navigation tree", ()=>{
+      cy.get('.panel-body > .nav > :nth-child(1) > a').click();
+      cy.get('.panel-body > :nth-child(1) > :nth-child(2) > .nav > :nth-child(1) > a').should("be.visible").click();
+      cy.get('.panel-body > :nth-child(1) > :nth-child(2) > .nav > :nth-child(1) > a').should("be.visible").click();
+      cy.get('#full-list').should("be.visible");
     });
   });
 });
