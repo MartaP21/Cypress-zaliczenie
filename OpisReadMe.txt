@@ -6,3 +6,7 @@ Spełnione wymagania projektu:
 - id projektu dla dashboard'u jest skonfigurowane w cypress.json - "projectId": "nzdiyc"
 - polecenie uruchamiające nagrywanie do dashboardu:  npx cypress run --record --key ec6ec969-e152-4342-bb66-2a7287b7d07d
 - adres dashboardu:  https://dashboard.cypress.io/projects/nzdiyc/ 
+- dodane raportowanie: "cypress-mochawesome-reporter": "^3.1.0"
+- raport - uruchamianie: npx cypress run --spec "cypress\integration\1-Testy_PB\zal.spec.js" --browser chrome
+- raport HTML zapisany: C:\Program Files\WORKSPACE\Cypress-zaliczenie\cypress\report\index.html
+- raport video zapisanY; C:\Program Files\WORKSPACE\Cypress-zaliczenie\cypress\videos\1-Testy_PB\zal.spec.js.mp4

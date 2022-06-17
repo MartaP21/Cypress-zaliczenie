@@ -5,6 +5,11 @@
    "viewportWidth": 1000,
   "viewportHeight": 700,
   "projectId": "nzdiyc",
-  "reporter": "cypress-mochawesome-reporter"
+  "reporter": "cypress-mochawesome-reporter",
+  "reporterOptions": {
+    "reportDir": "cypress/report",
+    "charts": true,
+    "reportPageTitle": "Tests report"
+  }
 }
 
