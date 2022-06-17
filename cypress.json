@@ -4,6 +4,7 @@
    "watchForFilesChanges": false,
    "viewportWidth": 1000,
   "viewportHeight": 700,
-  "projectId": "nzdiyc"
+  "projectId": "nzdiyc",
+  "reporter": "cypress-mochawesome-reporter"
 }
 
