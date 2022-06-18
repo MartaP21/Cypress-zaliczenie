@@ -106,5 +106,32 @@ context("Online Store Tests", () => {
       cy.get('.panel-body > :nth-child(1) > :nth-child(2) > .nav > :nth-child(1) > a').should("be.visible").click();
       cy.get('#full-list').should("be.visible");
     });
+    it("User login - negative case - fixtures", () => {
+      cy.visit("www.stomatologia-medilab.pl/user/loginUser");
+      cy.get(".panel-title").should("be.visible");
+      cy.fixture("logInData")
+        .then((logIn) => {
+          cy.get("#st_form-user-email")
+            .type(logIn[0].email)
+            .wait(3000);
+          cy.get("#st_form-user-password").type(logIn[0].pass).wait(3000);
+        });
+      cy.get(".st_form_ver6 > .pull-right > .btn").click();
+      cy.get(".control-label").should("be.visible");
+    });
+    it("User login - positive case - fixtures and alias", () => {
+      cy.visit("www.stomatologia-medilab.pl/user/loginUser");
+      cy.get(".panel-title").should("be.visible");
+      cy.fixture("logInData").as("log");
+      cy.get("@log")
+        .then((logIn) => {
+          cy.get("#st_form-user-email")
+            .type(logIn[1].email)
+            .wait(3000);
+          cy.get("#st_form-user-password").type(logIn[1].pass).wait(3000);
+        });
+      cy.get(".st_form_ver6 > .pull-right > .btn").click();
+      cy.get('.panel-body > :nth-child(1)').should("be.visible");
+    });
   });
 });
