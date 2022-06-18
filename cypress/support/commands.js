@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("closePolicyWindow", () => {
+    cy.get("#cookies_close > .glyphicon").click().should("not.be.visible");
+  });
+  Cypress.Commands.add('checkElementsVisibility',
+  { prevSubject: 'element'},
+  (subject)=>{
+      return cy.wrap(subject).should('be.visible');
+  });

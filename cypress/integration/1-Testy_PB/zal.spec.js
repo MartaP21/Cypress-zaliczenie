@@ -1,16 +1,18 @@
 /// <reference types="cypress"/>
 
+
+
 context("Online Store Tests", () => {
   describe("Basic functionalities", () => {
     beforeEach("Enter page and confirm policy", () => {
       cy.visit("www.stomatologia-medilab.pl");
       cy.url().should("contain", "stomatologia");
-      cy.get("#cookies_close > .glyphicon").click().should("not.be.visible");
+      cy.closePolicyWindow();
       cy.fixture("searchProduct.json").as("product");
     });
     it("Banner scrolling test", () => {
-      cy.get(".arrow-right > .glyphicon").click().should("be.visible");
-      cy.get(".arrow-left > .glyphicon").click().should("be.visible");
+      cy.get(".arrow-right > .glyphicon").click().checkElementsVisibility();
+      cy.get(".arrow-left > .glyphicon").click().checkElementsVisibility();
     });
     it.skip("Banner links test", () => {
       //nie przechodzi
@@ -58,7 +60,7 @@ context("Online Store Tests", () => {
     });
     it("Search field Tests - fixtures", () => {
       cy.get("#nav-button-search > .glyphicon").click();
-      cy.get("#nav-search > .form-inline").should("be.visible");
+      cy.get("#nav-search > .form-inline").checkElementsVisibility();
       cy.fixture("searchProduct")
         .then((products) => {
           cy.get("#nav-search > .form-inline")
@@ -86,7 +88,7 @@ context("Online Store Tests", () => {
     });
     it("User login - negative case", () => {
       cy.visit("www.stomatologia-medilab.pl/user/loginUser");
-      cy.get(".panel-title").should("be.visible");
+      cy.get(".panel-title").checkElementsVisibility();
       cy.get("#st_form-user-email").type("negativeTest");
       cy.get("#st_form-user-password").type("pass");
       cy.get(".st_form_ver6 > .pull-right > .btn").click();
@@ -94,44 +96,46 @@ context("Online Store Tests", () => {
     });
     it("User login - positive case", () => {
       cy.visit("www.stomatologia-medilab.pl/user/loginUser");
-      cy.get(".panel-title").should("be.visible");
+      cy.get(".panel-title").checkElementsVisibility();
       cy.get("#st_form-user-email").type("marta.86@wp.pl");
       cy.get("#st_form-user-password").type("u5PtHV7byDJwpMR");
       cy.get(".st_form_ver6 > .pull-right > .btn").click();
-      cy.get('.panel-body > :nth-child(1)').should("be.visible");
+      cy.get(".panel-body > :nth-child(1)").should("be.visible");
     });
-    it("Finding product throught navigation tree", ()=>{
-      cy.get('.panel-body > .nav > :nth-child(1) > a').click();
-      cy.get('.panel-body > :nth-child(1) > :nth-child(2) > .nav > :nth-child(1) > a').should("be.visible").click();
-      cy.get('.panel-body > :nth-child(1) > :nth-child(2) > .nav > :nth-child(1) > a').should("be.visible").click();
-      cy.get('#full-list').should("be.visible");
+    it("Finding product throught navigation tree", () => {
+      cy.get(".panel-body > .nav > :nth-child(1) > a").click();
+      cy.get(
+        ".panel-body > :nth-child(1) > :nth-child(2) > .nav > :nth-child(1) > a"
+      )
+        .should("be.visible")
+        .click();
+      cy.get(
+        ".panel-body > :nth-child(1) > :nth-child(2) > .nav > :nth-child(1) > a"
+      )
+        .should("be.visible")
+        .click();
+      cy.get("#full-list").should("be.visible");
     });
     it("User login - negative case - fixtures", () => {
       cy.visit("www.stomatologia-medilab.pl/user/loginUser");
       cy.get(".panel-title").should("be.visible");
-      cy.fixture("logInData")
-        .then((logIn) => {
-          cy.get("#st_form-user-email")
-            .type(logIn[0].email)
-            .wait(3000);
-          cy.get("#st_form-user-password").type(logIn[0].pass).wait(3000);
-        });
+      cy.fixture("logInData").then((logIn) => {
+        cy.get("#st_form-user-email").type(logIn[0].email).wait(3000);
+        cy.get("#st_form-user-password").type(logIn[0].pass).wait(3000);
+      });
       cy.get(".st_form_ver6 > .pull-right > .btn").click();
       cy.get(".control-label").should("be.visible");
     });
     it("User login - positive case - fixtures and alias", () => {
       cy.visit("www.stomatologia-medilab.pl/user/loginUser");
-      cy.get(".panel-title").should("be.visible");
+      cy.get(".panel-title").checkElementsVisibility();
       cy.fixture("logInData").as("log");
-      cy.get("@log")
-        .then((logIn) => {
-          cy.get("#st_form-user-email")
-            .type(logIn[1].email)
-            .wait(3000);
-          cy.get("#st_form-user-password").type(logIn[1].pass).wait(3000);
-        });
+      cy.get("@log").then((logIn) => {
+        cy.get("#st_form-user-email").type(logIn[1].email).wait(3000);
+        cy.get("#st_form-user-password").type(logIn[1].pass).wait(3000);
+      });
       cy.get(".st_form_ver6 > .pull-right > .btn").click();
-      cy.get('.panel-body > :nth-child(1)').should("be.visible");
+      cy.get(".panel-body > :nth-child(1)").checkElementsVisibility();
     });
   });
 });
