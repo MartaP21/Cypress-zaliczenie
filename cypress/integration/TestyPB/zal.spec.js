@@ -1,7 +1,5 @@
 /// <reference types="cypress"/>
 
-
-
 context("Online Store Tests", () => {
   describe("Basic functionalities", () => {
     beforeEach("Enter page and confirm policy", () => {
