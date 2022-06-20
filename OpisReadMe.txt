@@ -1,5 +1,5 @@
 Automatyczne testy funkcjonalne sklepu internetowego www.stomatologia-medilab.pl.
-testy wykonano w wersji cypress 9.7.0
+testy wykonano w wersji cypress 9.6.0
 Spełnione wymagania projektu:
 - minimum 10 testów automatycznych z co najmniej jedną akcją i asercją - plik: zal.spec.js
 - fixtures - przy testach wyszukiwarki produktów - podstawiają wartości do wyszukiwania

@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import AlertDoKoszyka from "../TestyPB/pageObjects/alertDoKoszyka";
+import AlertDoKoszyka from "../pageObjects/alertDoKoszyka";
 
 beforeEach("Enter page and confirm policy", () => {
   cy.visit("www.stomatologia-medilab.pl");

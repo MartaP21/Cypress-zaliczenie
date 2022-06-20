@@ -48,11 +48,9 @@ context("Online Store Tests", () => {
         });
     });
     it("Adding item to the chart - indirect, from product page", () => {
-      cy.get(
-        "#product_group_new > .product > .panel-body > :nth-child(4) > a"
-      ).click();
-      cy.get("#product-card_1438 > div > .btn").should("be.visible");
-      cy.get("#product-card_1438 > div > .btn").click();
+      cy.get(':nth-child(4) > .thumbnail > :nth-child(2) > .back-side-product')
+      .click();
+      cy.get('#product-card_1433 > div > .btn').should("be.visible").click();
       cy.get(".modal-footer > .btn-primary").click();
       cy.url().should("contain", "basket");
     });
