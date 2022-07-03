@@ -18,6 +18,7 @@ context("Online Store Tests", () => {
         { multiple: true },
         { force: true }
       );
+      //cy.get(".swiper-slide-active > a > .img-responsive").invoke('removeAttr', 'target').click()
     });
     it("Enter product detiles - by it's back side", () => {
       cy.get(
@@ -50,7 +51,7 @@ context("Online Store Tests", () => {
     it("Adding item to the chart - indirect, from product page", () => {
       cy.get(':nth-child(4) > .thumbnail > :nth-child(2) > .back-side-product')
       .click();
-      cy.get('#product-card_1433 > div > .btn').should("be.visible").click();
+      cy.get('button.btn.btn-shopping-cart').should("be.visible").click();
       cy.get(".modal-footer > .btn-primary").click();
       cy.url().should("contain", "basket");
     });
